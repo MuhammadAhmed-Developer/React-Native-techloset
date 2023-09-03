@@ -1,5 +1,6 @@
 import React from 'react'
 import { View, Text, Button } from 'react-native'
+import CompanyData from './components/CompanyData'
 
 const  App=()=> {
   let name = 'Ahmed'
@@ -19,6 +20,7 @@ const  App=()=> {
     </View>
     <View style={{padding:50, backgroundColor:'green'}}>
    <UserData/>
+   <UserData/>
     </View>
     </>
   )
@@ -30,9 +32,12 @@ const UserData = () =>{
     <>
     <Text>USer Name = Ahmed</Text>
     <Text>USer Email = ahmed@gmail.com</Text>
+    <Text>Company: <CompanyData/></Text>
     </>
   )
 }
+
+
 
 
 export  default App
