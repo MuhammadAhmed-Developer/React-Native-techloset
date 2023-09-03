@@ -3,7 +3,7 @@ import React from 'react'
 
 const CompanyData = () => {
   return (
-    <View style={{backgroundColor:'purple', padding:20}}>
+    <View style={{backgroundColor:'purple', padding:2}}>
     <Text>My Company</Text>
     </View>
   )
