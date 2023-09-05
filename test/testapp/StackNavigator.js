@@ -55,7 +55,7 @@ const StackNavigator = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Main" component={BottomTabs} />
+        <Stack.Screen name="Main" component={BottomTabs} options={{headerShown: false}}/>
       </Stack.Navigator>
     </NavigationContainer>
   )
