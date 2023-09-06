@@ -1,14 +1,15 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-const BookingScreen = () => {
+const CreateNewNotes = () => {
   return (
     <View>
-      <Text style={{color:'black'}}>BookingScreen</Text>
+      <Text>CreateNewNotes</Text>
+      
     </View>
   )
 }
 
-export default BookingScreen
+export default CreateNewNotes
 
 const styles = StyleSheet.create({})

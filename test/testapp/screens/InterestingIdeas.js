@@ -1,14 +1,14 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-const SavedScreen = () => {
+const InterestingIdeas = () => {
   return (
     <View>
-      <Text>SavedScreen</Text>
+      <Text>InterestingIdeas</Text>
     </View>
   )
 }
 
-export default SavedScreen
+export default InterestingIdeas
 
 const styles = StyleSheet.create({})
