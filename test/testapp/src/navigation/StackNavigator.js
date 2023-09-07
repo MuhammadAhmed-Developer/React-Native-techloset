@@ -1,10 +1,14 @@
-import { StyleSheet} from 'react-native'
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
 import { NavigationContainer } from '@react-navigation/native';
-import Login from './screens/Login';
-import OnboardingScreen from './screens/OnboardingScreen';
+import Login from '../auth/Login';
+import OnboardingScreen from '../screens/OnboardingScreen';
+import Register from '../auth/Register';
+import Icon from 'react-native-vector-icons/FontAwesome6';
+import ForgotPassword from '../auth/ForgotPassword';
+import CreateNewPassword from '../auth/CreateNewPassword';
+import HomeScreen from '../screens/HomeScreen';
+import BottomTabs from './HomeStackNavigation';
 const StackNavigator = () => {
   const Stack = createNativeStackNavigator();
 
@@ -47,11 +51,17 @@ const StackNavigator = () => {
 //     )
 //   }
 
+
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName='OnboardingScreen'>
         <Stack.Screen name="OnboardingScreen" component={OnboardingScreen} options={{headerShown: false}}/>
         <Stack.Screen name="Login" component={Login} options={{headerShown: false}}/>
+        <Stack.Screen name="Register" component={Register} options={{headerShown: false}}/>
+        <Stack.Screen name="ForgotPassword" component={ForgotPassword} options={{headerShown: false}}/>
+        <Stack.Screen name="CreateNewPassword" component={CreateNewPassword} options={{headerShown: false}}/>
+        <Stack.Screen name="HomeScreen" component={HomeScreen} options={{headerShown: false}}/>
+        <Stack.Screen name="BottomTabs" component={BottomTabs} options={{headerShown: false}}/>
       </Stack.Navigator>
     </NavigationContainer>
   )
@@ -59,4 +69,3 @@ const StackNavigator = () => {
 
 export default StackNavigator
 
-const styles = StyleSheet.create({})
