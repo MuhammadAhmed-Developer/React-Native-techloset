@@ -15,7 +15,7 @@ import InterestingIdea from '../screens/InterestingIdea';
 import Guidance from '../screens/Guidance';
 import Goals from '../screens/Goals';
 import RoutineTasks from '../screens/RoutineTasks';
-import { SearchBar } from 'react-native-screens';
+import  SearchBar from '../screens/SearchBar';
 const StackNavigator = () => {
   const Stack = createNativeStackNavigator();
 

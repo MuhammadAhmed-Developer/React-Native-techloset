@@ -4,6 +4,7 @@ import HeaderBack from '../components/HeaderBack';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import CheckBox from '@react-native-community/checkbox';
 import { BorderOutlined } from '@ant-design/icons';
+import BottomMenuBar from '../navigation/BottomMenuBar';
 
 
 const Goals = () => {
@@ -11,11 +12,13 @@ const Goals = () => {
   const [toggleCheckBox, setToggleCheckBox] = useState(false)
 
   return (
-    <ScrollView style={styles.main}>
+    <View style={styles.main}>
+
       <View>
         <HeaderBack title='Back' />
       </View>
       <View style={styles.line}></View>
+    <ScrollView >
       <View style={styles.container}>
         <View style={styles.buyDiv}>
           <Text style={styles.buysome}>
@@ -73,6 +76,8 @@ const Goals = () => {
       </View>
       </View>
     </ScrollView>
+    <BottomMenuBar/>
+    </View>
   )
 }
 
@@ -81,6 +86,8 @@ export default Goals
 const styles = StyleSheet.create({
   main: {
     backgroundColor: 'white',
+    flex: 1,
+
   },
   line: {
     width: '100%',
@@ -89,7 +96,6 @@ const styles = StyleSheet.create({
     marginTop: 30,
   },
   container: {
-    flex: 1,
     justifyContent: 'center',
     padding: 20
 

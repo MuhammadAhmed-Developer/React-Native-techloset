@@ -1,14 +1,17 @@
 import { Button, StyleSheet, Text, View, ScrollView, TouchableOpacity } from 'react-native'
 import React from 'react'
 import HeaderBack from '../components/HeaderBack'
+import BottomMenuBar from '../navigation/BottomMenuBar'
 
 const InterestingIdea = () => {
     return (
-        <ScrollView style={styles.main}>
+        <View style={styles.main}>
+
             <View>
                 <HeaderBack title='Back' />
             </View>
             <View style={styles.line}></View>
+        <ScrollView >
             <View style={styles.container}>
                 <Text style={styles.newIdea}>💡 New Product </Text>
                 <Text style={styles.newIdea}> Ideas</Text>
@@ -42,6 +45,8 @@ const InterestingIdea = () => {
             </View>
 
         </ScrollView>
+        <BottomMenuBar/>
+</View>
     )
 }
 
@@ -50,9 +55,10 @@ export default InterestingIdea
 const styles = StyleSheet.create({
     main: {
         backgroundColor: 'white',
+        flex: 1,
     },
     container: {
-        flex: 1,
+      
         padding: 16
 
     },

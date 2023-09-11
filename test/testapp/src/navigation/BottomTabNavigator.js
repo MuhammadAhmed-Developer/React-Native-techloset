@@ -25,7 +25,7 @@ export default function BottomTabNavigator() {
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
-        tabBarHideOnKeyboard:true,
+        tabBarHideOnKeyboard: true,
         tabBarStyle: {
           position: 'absolute',
           height: 69,
@@ -35,11 +35,11 @@ export default function BottomTabNavigator() {
           justifyContent: 'center',
           elevation: 0,
           shadowOpacity: 0.1,
-          
+
         },
       }}
     >
-      <Tab.Screen name='HomeScreen' component={HomeScreen} options={{  tabBarVisible: false,
+      <Tab.Screen name='HomeScreen' component={HomeScreen} options={{
         tabBarLabel: "Home", tabBarActiveTintColor: '#6A3EA1', headerShown: false, tabBarIcon: ({ focused }) => focused ? (
           <><IconsE name='home' size={30} color="#6A3EA1" /></>) : (
           <><IconsM name='home-outline' size={30} color="#827D89" /></>
@@ -58,9 +58,9 @@ export default function BottomTabNavigator() {
         tabBarLabel: '', tabBarIconStyle: {
           position: 'relative',
           marginTop: -40,
-          tabBarHideOnKeyboard:true,
-          
-        }, tabBarActiveTintColor: '#6A3EA1' ,headerShown: false, tabBarIcon: ({ focused }) => focused ? (
+          tabBarHideOnKeyboard: true,
+
+        }, tabBarActiveTintColor: '#6A3EA1', headerShown: false, tabBarIcon: ({ focused }) => focused ? (
           <><IconsI name='add-circle-sharp' size={70} color="#6A3EA1" /></>) : (
           <><IconsI name='add-circle-sharp' size={70} color="#6A3EA1" /></>
         )

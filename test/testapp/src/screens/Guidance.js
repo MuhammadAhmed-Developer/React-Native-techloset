@@ -2,13 +2,16 @@ import { Button, StyleSheet, Text, View, ScrollView, TouchableOpacity, Image } f
 import React from 'react'
 import HeaderBack from '../components/HeaderBack'
 import Icon from 'react-native-vector-icons/Octicons';
+import BottomMenuBar from '../navigation/BottomMenuBar';
 const Guidence = () => {
     return (
-        <ScrollView style={styles.main}>
+        <View style={styles.main}>
+
             <View>
                 <HeaderBack title='Back' />
             </View>
             <View style={styles.line}></View>
+        <ScrollView >
             <View style={styles.container}>
                 <Text style={styles.newIdea}>💡 New Product </Text>
                 <Text style={styles.newIdea}> Ideas</Text>
@@ -37,6 +40,8 @@ const Guidence = () => {
             </View>
 
         </ScrollView>
+        <BottomMenuBar/>
+        </View>
     )
 }
 
@@ -45,9 +50,10 @@ export default Guidence
 const styles = StyleSheet.create({
     main: {
         backgroundColor: 'white',
+        flex: 1,
     },
     container: {
-        flex: 1,
+        
         padding: 16
 
     },

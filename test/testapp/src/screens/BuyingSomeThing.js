@@ -4,6 +4,7 @@ import HeaderBack from '../components/HeaderBack';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import CheckBox from '@react-native-community/checkbox';
 import { BorderOutlined } from '@ant-design/icons';
+import BottomMenuBar from '../navigation/BottomMenuBar';
 
 
 const BuyingSomeThing = () => {
@@ -11,11 +12,13 @@ const BuyingSomeThing = () => {
   const [toggleCheckBox, setToggleCheckBox] = useState(false)
 
   return (
-    <ScrollView style={styles.main}>
+    <View style={styles.main}>
+
       <View>
         <HeaderBack title='Back' />
       </View>
       <View style={styles.line}></View>
+    <ScrollView>
       <View style={styles.container}>
         <View style={styles.buyDiv}>
           <Text style={styles.buysome}>
@@ -70,10 +73,12 @@ const BuyingSomeThing = () => {
       <TouchableOpacity style={styles.btns}>
         <Text style={styles.btntext}>Important</Text>
       </TouchableOpacity>
-      
+        
       </View>
       </View>
     </ScrollView>
+    <BottomMenuBar/>
+</View>
   )
 }
 
@@ -82,6 +87,7 @@ export default BuyingSomeThing
 const styles = StyleSheet.create({
   main: {
     backgroundColor: 'white',
+    flex:1
   },
   line: {
     width: '100%',
