@@ -1,4 +1,4 @@
-import { Button, StyleSheet, Text, View, TextInput, ScrollView } from 'react-native'
+import { Button, StyleSheet, Text, View, TextInput, ScrollView, StatusBar } from 'react-native'
 import React from 'react'
 import HeaderBack from '../components/HeaderBack'
 import PurpleBtn from '../components/PurpleBtn'
@@ -13,7 +13,9 @@ const CreateNewPassword = () => {
   }
 
   return (
-    <ScrollView>
+    <ScrollView  style={styles.main}>
+      <StatusBar barStyle="dark-content" hidden={false} backgroundColor="white" />
+      
       <View>
         <HeaderBack title='Back to Login' />
       </View>
@@ -42,11 +44,15 @@ const CreateNewPassword = () => {
 export default CreateNewPassword
 
 const styles = StyleSheet.create({
+  main:{
+   backgroundColor:"white",
+   flex:1
+  },
   container: {
     flex: 1,
     justifyContent: 'center',
     left: 16,
-    marginTop: 150
+    marginTop: 140
   },
   forgot: {
     fontSize: 32,

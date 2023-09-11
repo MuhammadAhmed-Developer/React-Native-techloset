@@ -1,8 +1,19 @@
-import { StyleSheet, Text, ScrollView, View, Image, TouchableOpacity } from 'react-native'
+import { PureComponent } from 'react'
+import { StyleSheet, Text, ScrollView, View, Image, TouchableOpacity, StatusBar } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
+import PurpleBtn from '../components/PurpleBtn'
 
 const HomeScreen = () => {
+
+  const navigation = useNavigation()
+
+     const CreateNewNotes = () =>{
+       navigation.navigate('CreateNewNotes')
+     }
+
   return (
-    <ScrollView>
+    <ScrollView style={styles.main}>
+      <StatusBar barStyle="dark-content" hidden={false} backgroundColor="#FAF8FC" />
       <View style={styles.container}>
         <View>
           <Image source={require('../assects/images/Home.png')} />
@@ -11,11 +22,7 @@ const HomeScreen = () => {
         <Text style={styles.text}>Every big step start  with small step.
           Notes your first idea and start
           your journey!</Text>
-      </View>
-      <View style={styles.btnCon}>
-        <TouchableOpacity>
-           <Text style={styles.plus}>+</Text>
-        </TouchableOpacity>
+        <PurpleBtn title='New Notes'  func={CreateNewNotes}/>
       </View>
     </ScrollView>
   )
@@ -24,11 +31,16 @@ const HomeScreen = () => {
 export default HomeScreen
 
 const styles = StyleSheet.create({
+  main:{
+      backgroundColor:'#FAF8FC'
+  },
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: "center",
-    marginTop: 100
+    marginTop: 100,
+    
+    
   },
   journey: {
     fontSize: 24,
@@ -45,8 +57,4 @@ const styles = StyleSheet.create({
     textAlign:'center',
     marginTop:20
   },
-  plus:{
-    color:'black',
-
-  }
-})
+ })

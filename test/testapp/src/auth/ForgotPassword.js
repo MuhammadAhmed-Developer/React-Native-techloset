@@ -11,7 +11,7 @@ const ForgotPassword = () => {
   }
 
   return (
-    <ScrollView>
+    <ScrollView style={styles.main}>
       <View>
         <HeaderBack title='Back to Login' />
       </View>
@@ -33,6 +33,9 @@ const ForgotPassword = () => {
 export default ForgotPassword
 
 const styles = StyleSheet.create({
+  main:{
+    backgroundColor:'white'
+  },
   container: {
     flex: 1,
     justifyContent: 'center',

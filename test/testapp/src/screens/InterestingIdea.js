@@ -1,8 +1,8 @@
-import { Button, StyleSheet, Text, View, ScrollView, TouchableOpacity, Image } from 'react-native'
+import { Button, StyleSheet, Text, View, ScrollView, TouchableOpacity } from 'react-native'
 import React from 'react'
 import HeaderBack from '../components/HeaderBack'
-import Icon from 'react-native-vector-icons/Octicons';
-const Guidence = () => {
+
+const InterestingIdea = () => {
     return (
         <ScrollView style={styles.main}>
             <View>
@@ -12,16 +12,6 @@ const Guidence = () => {
             <View style={styles.container}>
                 <Text style={styles.newIdea}>💡 New Product </Text>
                 <Text style={styles.newIdea}> Ideas</Text>
-                <View style={{marginTop:20}}>
-                    <Image source={require('../assects/images/laptop.png')} />
-                    <View>
-                      <TouchableOpacity style={{display:'flex', alignItems:"flex-end"}} >
-                        <View style={styles.iconPencil}>
-                          <Icon name='pencil' size={30} color='#6A3EA1'/>
-                        </View>
-                      </TouchableOpacity>
-                    </View>
-                </View>
                 <View>
                     <Text style={styles.para}>
                         Create a mobile app UI Kit that provide a basic notes functionality but with some improvement.
@@ -34,13 +24,28 @@ const Guidence = () => {
                 <View>
                     <Text style={styles.reminder}>Reminder set on 15/07/2021, 18:30</Text>
                 </View>
+                <View style={{ display: "flex", flexDirection: "row", gap: 10, flexWrap: 'wrap' }}>
+                    <TouchableOpacity style={styles.btns}>
+                        <Text style={styles.btntext}>Important</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.btns}>
+                        <Text style={styles.btntext}>Top Priority</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.btns}>
+                        <Text style={styles.btntext}>Should Be Important in this week</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.btns}>
+                        <Text style={styles.btntext}>Important</Text>
+                    </TouchableOpacity>
+
+                </View>
             </View>
 
         </ScrollView>
     )
 }
 
-export default Guidence
+export default InterestingIdea
 
 const styles = StyleSheet.create({
     main: {
@@ -92,19 +97,6 @@ const styles = StyleSheet.create({
       fontSize:12,
       fontWeight:'400',
       color:"#827D89"
-    },
-    iconPencil:{
-      width:64,
-      height:64,
-      borderRadius:100,
-      padding:16,
-      backgroundColor:'white',
-      justifyContent:'center',
-      alignItems:"center",
-      position:'absolute',
-      bottom:10,
-      right:15
-      
     }
 
 })

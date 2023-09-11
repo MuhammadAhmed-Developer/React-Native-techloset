@@ -10,7 +10,7 @@ const Login = () => {
     navigation.navigate('Register')
   }
   return (
-    <ScrollView >
+    <ScrollView  style={styles.main}>
     <View style={styles.container}>
       <StatusBar barStyle="dark-content" hidden={false} backgroundColor="white" />
       <View>
@@ -50,11 +50,14 @@ const Login = () => {
 export default Login
 
 const styles = StyleSheet.create({
+  main:{
+     backgroundColor:'white'
+  },
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: "center",
-    marginTop: 80
+    marginTop: 80,
 
   },
   login: {
