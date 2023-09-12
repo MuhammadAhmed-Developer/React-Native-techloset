@@ -16,6 +16,7 @@ import Guidance from '../screens/Guidance';
 import Goals from '../screens/Goals';
 import RoutineTasks from '../screens/RoutineTasks';
 import  SearchBar from '../screens/SearchBar';
+import FinishedScreen from '../screens/FinishedScreen';
 const StackNavigator = () => {
   const Stack = createNativeStackNavigator();
 
@@ -24,7 +25,7 @@ const StackNavigator = () => {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName='CreateNewNotes'>
+      <Stack.Navigator initialRouteName='FinishedScreen'>
         {/* <Stack.Screen name="BottomTabNavigator" component={BottomTabNavigator} options={{headerShown:false, }}/> */}
         <Stack.Screen name="OnboardingScreen" component={OnboardingScreen} options={{headerShown: false}}/>
         <Stack.Screen name="Login" component={Login} options={{headerShown: false, tabBarVisible: false,}}/>
@@ -39,6 +40,7 @@ const StackNavigator = () => {
         <Stack.Screen name="Goals" component={Goals} options={{headerShown: false}}/>
         <Stack.Screen name="RoutineTasks" component={RoutineTasks} options={{headerShown: false}}/>
         <Stack.Screen name="SearchBar" component={SearchBar} options={{headerShown: false}}/>
+        <Stack.Screen name="FinishedScreen" component={FinishedScreen} options={{headerShown: false}}/>
       </Stack.Navigator>
     </NavigationContainer>
   )
