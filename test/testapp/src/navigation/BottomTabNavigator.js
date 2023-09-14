@@ -9,13 +9,20 @@ import IconsM from 'react-native-vector-icons/MaterialCommunityIcons';
 import IconsE from 'react-native-vector-icons/Entypo';
 import IconsA from 'react-native-vector-icons/AntDesign';
 import IconsI from 'react-native-vector-icons/Ionicons';
+import IconsF from 'react-native-vector-icons/Feather';
 import ForgotPassword from '../auth/ForgotPassword';
 import CreateNewPassword from '../auth/CreateNewPassword';
 import HomeScreen from '../screens/HomeScreen';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import FinishedScreen from '../screens/FinishedScreen';
+import CreateNewNotes from '../screens/CreateNewNotes';
+import SearchBar  from  '../screens/SearchBar';
+import Settings from '../screens/Settings';
+import { StyleSheet, View } from 'react-native';
 
 
 const Tab = createBottomTabNavigator();
+const Stack = createNativeStackNavigator();
 
 
 export default function BottomTabNavigator() {
@@ -28,9 +35,9 @@ export default function BottomTabNavigator() {
         tabBarHideOnKeyboard: true,
         tabBarStyle: {
           position: 'absolute',
-          height: 69,
+          height: 84,
           paddingVertical: 20,
-          paddingBottom: 2,
+          paddingBottom: 16 ,
           alignItems: 'center',
           justifyContent: 'center',
           elevation: 0,
@@ -47,27 +54,28 @@ export default function BottomTabNavigator() {
       }} />
 
 
-      <Tab.Screen name='Login' component={Login} options={{
+      <Tab.Screen name='FinishedScreen' component={FinishedScreen} options={{
         tabBarLabel: "Finished", tabBarActiveTintColor: '#6A3EA1', headerShown: false, tabBarIcon: ({ focused }) => focused ? (
           <><Icons name='clipboard-check' size={30} color="#6A3EA1" /></>) : (
           <><IconsM name='clipboard-check-outline' size={30} color="#827D89" /></>
         )
       }} />
 
-      <Tab.Screen name='CreateNewPassword' component={CreateNewPassword} options={{
+      <Tab.Screen  name='CreateNewNotes' component={CreateNewNotes} options={{
         tabBarLabel: '', tabBarIconStyle: {
           position: 'relative',
-          marginTop: -40,
+          marginTop: -52,
           tabBarHideOnKeyboard: true,
+          
 
         }, tabBarActiveTintColor: '#6A3EA1', headerShown: false, tabBarIcon: ({ focused }) => focused ? (
-          <><IconsI name='add-circle-sharp' size={70} color="#6A3EA1" /></>) : (
-          <><IconsI name='add-circle-sharp' size={70} color="#6A3EA1" /></>
+          <View style={styles.iconParent}><IconsF name='plus' style={styles.iconPlus} size={40} color="white" /></View>) : (
+          <View style={styles.iconParent}><IconsF name='plus' style={styles.iconPlus} size={40} color="white" /></View>
         )
       }} />
 
 
-      <Tab.Screen name='Register' component={Register} options={{
+      <Tab.Screen name='SearchBar' component={SearchBar} options={{
         tabBarLabel: "Search", tabBarActiveTintColor: '#6A3EA1', headerShown: false, tabBarIcon: ({ focused }) => focused ? (
           <><IconsA name='search1' size={30} color="#6A3EA1" /></>) : (
           <><IconsA name='search1' size={30} color="#827D89" /></>
@@ -75,7 +83,7 @@ export default function BottomTabNavigator() {
       }} />
 
 
-      <Tab.Screen name='ForgotPassword' component={ForgotPassword} options={{
+      <Tab.Screen name='Settings' component={Settings} options={{
         tabBarLabel: "Settings", tabBarActiveTintColor: '#6A3EA1', headerShown: false, tabBarIcon: ({ focused }) => focused ? (
           <><IconsA name='setting' size={30} color="#6A3EA1" /></>) : (
           <><IconsA name='setting' size={30} color="#827D89" /></>
@@ -86,6 +94,23 @@ export default function BottomTabNavigator() {
   )
 }
 
+const styles = StyleSheet.create({
+  iconParent:{
+  shadowColor:'black',
+  shadowOpacity:1,
+  shadowRadius:50,
+  elevation:7,
+  shadowOffset:{width:120, height:20},
+  backgroundColor:'#6A3EA1',
+  borderRadius:100,
+  height:64,
+  width:64,
+  display:'flex',
+  justifyContent:'center',
+  alignItems:'center',
 
+},
+
+})
 
 

@@ -56,7 +56,7 @@ const HomeScreen = () => {
 
   return (
     <>
-       <StatusBar barStyle="dark-content" hidden={false} backgroundColor="#FAF8FC" />
+       <StatusBar barStyle="dark-content" hidden={false} backgroundColor="white" />
       <View style={styles.parent}>
         <View style={styles.header}>
           <Text style={styles.pinned}>Pinned Notes</Text>
@@ -163,6 +163,7 @@ const styles = StyleSheet.create({
   },
   parent: {
     padding: 16,
+    marginTop:16
   },
   view: {
     color: '#6A3EA1',
