@@ -16,6 +16,7 @@ import IconMa from 'react-native-vector-icons/MaterialIcons';
 import Modal from 'react-native-modal';
 import React, { useState } from 'react';
 import IconA from 'react-native-vector-icons/AntDesign';
+import { useNavigation } from '@react-navigation/native';
 
 const Settings = () => {
   const [isEnabled, setIsEnabled] = useState(false);
@@ -30,6 +31,12 @@ const Settings = () => {
   const toggleLogout = () => {
     setModalVisibleLogout(!isModalVisibleLogout);
   };
+
+  const navigation = useNavigation()
+
+const  handleLogout = () =>{
+  navigation.navigate('Login')
+}
 
   return (
     <>
@@ -254,7 +261,7 @@ const Settings = () => {
                 <TouchableOpacity onPress={toggleLogout} style={styles.cencelbtn}>
                    <Text style={styles.cencelbtntext}>Cencel</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={[styles.cencelbtn, styles.yesBtn]}>
+                <TouchableOpacity onPress={handleLogout} style={[styles.cencelbtn, styles.yesBtn]}>
                    <Text style={[styles.cencelbtntext, styles.yesText]}>Yes</Text>
                 </TouchableOpacity>
               </View>

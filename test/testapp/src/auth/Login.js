@@ -7,7 +7,7 @@ const Login = () => {
   const navigation = useNavigation()
 
   const Register = () => {
-    navigation.navigate('Register')
+    navigation.navigate('HomeScreen')
   }
   return (
     <ScrollView  style={styles.main}>

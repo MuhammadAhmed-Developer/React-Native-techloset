@@ -46,7 +46,7 @@ export default function BottomTabNavigator() {
         },
       }}
     >
-      <Tab.Screen name='HomeScreen' component={HomeScreen} options={{
+      <Tab.Screen name='HomeScreens' component={HomeScreen} options={{
         tabBarLabel: "Home", tabBarActiveTintColor: '#6A3EA1', headerShown: false, tabBarIcon: ({ focused }) => focused ? (
           <><IconsE name='home' size={30} color="#6A3EA1" /></>) : (
           <><IconsM name='home-outline' size={30} color="#827D89" /></>
@@ -62,6 +62,7 @@ export default function BottomTabNavigator() {
       }} />
 
       <Tab.Screen  name='CreateNewNotes' component={CreateNewNotes} options={{
+         tabBarStyle:{display:'none'},
         tabBarLabel: '', tabBarIconStyle: {
           position: 'relative',
           marginTop: -52,
@@ -76,6 +77,7 @@ export default function BottomTabNavigator() {
 
 
       <Tab.Screen name='SearchBar' component={SearchBar} options={{
+        tabBarStyle:{display:'none'},
         tabBarLabel: "Search", tabBarActiveTintColor: '#6A3EA1', headerShown: false, tabBarIcon: ({ focused }) => focused ? (
           <><IconsA name='search1' size={30} color="#6A3EA1" /></>) : (
           <><IconsA name='search1' size={30} color="#827D89" /></>
@@ -84,6 +86,7 @@ export default function BottomTabNavigator() {
 
 
       <Tab.Screen name='Settings' component={Settings} options={{
+         tabBarStyle:{display:'none'},
         tabBarLabel: "Settings", tabBarActiveTintColor: '#6A3EA1', headerShown: false, tabBarIcon: ({ focused }) => focused ? (
           <><IconsA name='setting' size={30} color="#6A3EA1" /></>) : (
           <><IconsA name='setting' size={30} color="#827D89" /></>

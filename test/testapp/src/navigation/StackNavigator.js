@@ -23,11 +23,9 @@ import ChangePassword from '../screens/ChangePassword';
 
 const StackNavigator = () => {
   const Stack = createNativeStackNavigator();
-
-
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator initialRouteName='OnboardingScreen'>
         <Stack.Screen name="BottomTabNavigator" component={BottomTabNavigator} options={{ headerShown: false, }} />
         <Stack.Screen name="OnboardingScreen" component={OnboardingScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Login" component={Login} options={{ headerShown: false, tabBarVisible: false, }} />
@@ -35,7 +33,7 @@ const StackNavigator = () => {
         <Stack.Screen name="ForgotPassword" component={ForgotPassword} options={{ headerShown: false }} />
         <Stack.Screen name="CreateNewPassword" component={CreateNewPassword} options={{ headerShown: false }} />
         <Stack.Screen name="HomeScreen" component={BottomTabNavigator} options={{ headerShown: false }} />
-        <Stack.Screen name="CreateNewNotes" component={CreateNewNotes} options={{ headerShown: false, tabBarVisible: false, }} />
+        <Stack.Screen name="CreateNewNotes" component={CreateNewNotes} options={{ headerShown: false, }} />
         <Stack.Screen name="BuyingSomeThing" component={BuyingSomeThing} options={{ headerShown: false }} />
         <Stack.Screen name="InterestingIdea" component={InterestingIdea} options={{ headerShown: false }} />
         <Stack.Screen name="Guidance" component={Guidance} options={{ headerShown: false }} />
@@ -43,7 +41,7 @@ const StackNavigator = () => {
         <Stack.Screen name="RoutineTasks" component={RoutineTasks} options={{ headerShown: false }} />
         <Stack.Screen name="SearchBar" component={SearchBar} options={{ headerShown: false }} />
         <Stack.Screen name="FinishedScreen" component={FinishedScreen} options={{ headerShown: false }} />
-        <Stack.Screen name="Settings" component={Settings} options={{ headerShown: false }} />
+        <Stack.Screen name="Settings" component={Settings} options={{ headerShown: false, tabBarStyle:{display:'none'} }} />
         <Stack.Screen name="EditProfile" component={EditProfile} options={{ headerShown: false }} />
         <Stack.Screen name="ChangePassword" component={ChangePassword} options={{ headerShown: false }} />
       </Stack.Navigator>

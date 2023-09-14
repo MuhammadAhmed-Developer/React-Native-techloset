@@ -9,11 +9,12 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 const OnboardingScreen = () => {
 
-  const navigation = useNavigation()
-
   const GoLogin = () => {
     navigation.navigate('Login')
   }
+  const navigation = useNavigation()
+  
+  setTimeout(GoLogin,1000)
 
   return (
     <>
