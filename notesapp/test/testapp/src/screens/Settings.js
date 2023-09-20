@@ -14,9 +14,11 @@ import IconF from 'react-native-vector-icons/SimpleLineIcons';
 import Iconm from 'react-native-vector-icons/MaterialCommunityIcons';
 import IconMa from 'react-native-vector-icons/MaterialIcons';
 import Modal from 'react-native-modal';
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import IconA from 'react-native-vector-icons/AntDesign';
 import { useNavigation } from '@react-navigation/native';
+import  AuthContext, { ContextAuth } from '../auth/AuthContext';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
 
 const Settings = () => {
   const [isEnabled, setIsEnabled] = useState(false);
@@ -34,9 +36,23 @@ const Settings = () => {
 
   const navigation = useNavigation()
 
-const  handleLogout = () =>{
-  navigation.navigate('Login')
-}
+
+
+const {userInfo, AuthData} = useContext(ContextAuth)
+
+
+const signOut = async () => {
+  try {
+    await GoogleSignin.signOut();
+    AuthData( null );
+    navigation.navigate('Login') // Remember to remove the user from your app's state as well
+  } catch (error) {
+    console.error(error);
+  }
+  console.log('Logout');
+};
+
+
 
   return (
     <>
@@ -55,10 +71,11 @@ const  handleLogout = () =>{
 
           <View style={styles.ProfileInfo}>
             <View>
-              <Image source={require('../assects/images/Profile.png')} />
+              <Image source={{uri:userInfo && userInfo.user.photo}} style={{width:65, height:65, borderRadius:100}} />
             </View>
             <View style={{ marginTop: 10 }}>
-              <Text style={styles.name}>Michael Antonio</Text>
+              <Text style={styles.name}>
+                {userInfo && userInfo.user.name}</Text>
               <View style={{ display: 'flex', flexDirection: 'row', gap: 6 }}>
                 <Icon
                   name="mail"
@@ -67,7 +84,7 @@ const  handleLogout = () =>{
                   style={{ marginTop: 3 }}
                 />
                 <Text style={{ fontSize: 12, color: '#827D89' }}>
-                  anto_michael@gmail.com
+                {userInfo && userInfo.user.email}
                 </Text>
               </View>
             </View>
@@ -261,7 +278,7 @@ const  handleLogout = () =>{
                 <TouchableOpacity onPress={toggleLogout} style={styles.cencelbtn}>
                    <Text style={styles.cencelbtntext}>Cencel</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={handleLogout} style={[styles.cencelbtn, styles.yesBtn]}>
+                <TouchableOpacity onPress={signOut} style={[styles.cencelbtn, styles.yesBtn]}>
                    <Text style={[styles.cencelbtntext, styles.yesText]}>Yes</Text>
                 </TouchableOpacity>
               </View>

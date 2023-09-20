@@ -1,9 +1,22 @@
 import { Image, StatusBar, StyleSheet, Text, TextInput, View, TouchableOpacity, ScrollView } from 'react-native'
-import React from 'react'
+import React, { useEffect, useState , useContext} from 'react'
 import { useNavigation } from '@react-navigation/native'
 import PurpleBtn from '../components/PurpleBtn';
-import firestore from '@react-native-firebase/firestore';
+import {
+  GoogleSignin,
+  statusCodes,
+} from '@react-native-google-signin/google-signin';
+import { ContextAuth } from './AuthContext';
+
+
+
 const Login = () => {
+  const [googleLogin, setGoogleLogin] = useState(null)
+
+  useEffect(() => {
+    GoogleSignin.configure({ webClientId: process.env.WEB_CLIENT_ID });
+  }, [])
+
 
   const navigation = useNavigation()
 
@@ -12,26 +25,57 @@ const Login = () => {
   }
 
 
-  const handleSubmit = () => {
-    console.log('Working')
-    firestore()
-    .collection('Users')
-    .add({
-      name: 'Ada Lovelace',
-      age: 30,
-    })
-    .then(() => {
-      console.log('User added!');
-    });
 
-  }
+  // Google Login Function
+  const signIn = async () => {
+    console.log('Login Start');
+    try {
+      await GoogleSignin.hasPlayServices();
+      const userInfo = await GoogleSignin.signIn();
+      setGoogleLogin(userInfo);
+      navigation.navigate('Settings')
+      // console.log('User login', userInfo);
+    } catch (error) {
+      if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+        
+        console.log('user cancelled the login flow');
+      } else if (error.code === statusCodes.IN_PROGRESS) {
+        console.log('operation (e.g. sign in) is in progress already') 
+      } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+       
+        console.log('play services not available or outdated') 
+
+      } else {
+        console.log('some other error happened', error);
+      }
+    }
+  };
+
+
+
+
+  const {AuthData} = useContext(ContextAuth)
+  
+  useEffect(() => {
+    if (googleLogin) {
+       AuthData(googleLogin)
+     }
+     }, [googleLogin])
+   
 
   return (
     <ScrollView style={styles.main}>
       <View style={styles.container}>
         <StatusBar barStyle="dark-content" hidden={false} backgroundColor="white" />
         <View>
-          <Text style={styles.login}>Let's Login</Text>
+          <Text style={styles.login}>Let's Login
+          {/* {googleLogin && googleLogin.user.name}
+          {googleLogin && googleLogin.user.email}
+          {<Image source={googleLogin && {uri:googleLogin.user.photo}}style={{width:100, height:100}}/>} */}
+         
+          
+          
+          </Text>
           <Text style={styles.notesIdea}>And notes your idea</Text>
           <View style={styles.inputParent}>
             <Text style={styles.lable}>Email Address</Text>
@@ -53,23 +97,23 @@ const Login = () => {
           </View>
           <View>
 
-          <View style={styles.iconsMain}>
-          <TouchableOpacity onPress={handleSubmit} style={styles.iconParent}>
-            <Image source={require('../assects/images/google.png')} />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.iconParent}>
-            <Image source={require('../assects/images/facebook.png')} />
-          </TouchableOpacity>
-          {/* <TouchableOpacity style={styles.iconParent}>
+            <View style={styles.iconsMain}>
+              <TouchableOpacity onPress={()=>signIn()} style={styles.iconParent}>
+                <Image source={require('../assects/images/google.png')} />
+              </TouchableOpacity>
+              <TouchableOpacity onPress={()=>signOut()} style={styles.iconParent}>
+                <Image source={require('../assects/images/facebook.png')} />
+              </TouchableOpacity>
+              {/* <TouchableOpacity style={styles.iconParent}>
             <Image source={require('../../assets/apple.png')} />
           </TouchableOpacity> */}
-        </View>
+            </View>
 
             {/* <TouchableOpacity style={styles.btn} onPress={handleSubmit}>
               <Image source={require('../assects/images/google.png')} />
               <Text style={styles.text}>Login with Google</Text>
             </TouchableOpacity> */}
-            
+
             <Text style={styles.registerHere}>Don’t have any account? <Text onPress={Register}>Register here</Text> </Text>
           </View>
         </View>
@@ -201,15 +245,15 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 120, height: 20 },
     shadowOpacity: 1,
     shadowRadius: 50,
-    elevation: 7, 
-},
+    elevation: 7,
+  },
 
-iconsMain: {
+  iconsMain: {
     display: 'flex',
     flexDirection: 'row',
     columnGap: 15,
     paddingTop: 5,
-    alignItems:'center',
-    justifyContent:'center'
-},
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
 })
